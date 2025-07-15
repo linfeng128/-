@@ -8,33 +8,71 @@
 </head>
 <body>
     <nav class="navbar">
-        <ul>
-            <li><a href="door.html" class="nav-link">推开星芒屋的大门</a></li>
+        <ul class="navbar-list">
+            <li class="navbar-item active"><a href="index.html">推开星芒屋的大门</a></li>
             <li><a href="about.html" class="nav-link">关于星芒屋</a></li>
-            <li><a href="followers.html" class="nav-link">圣人们的追随者</a></li>
+            <li><a href="followers.html" class="nav-link">圣人的追随者们</a></li>
             <li><a href="memories.html" class="nav-link">星芒屋的珍贵回忆</a></li>
             <li><a href="contact.html" class="nav-link">联系我们</a></li>
         </ul>
     </nav>
-    <header class="hero">
-        <div class="carousel">
-            <button class="carousel-btn left" id="prevBtn" aria-label="上一张">
-                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="16" cy="16" r="16" fill="none"/>
-                    <path d="M20 8L12 16L20 24" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-            </button>
-            <img src="promo1.jpg" alt="宣传照1" class="carousel-img active">
-            <img src="promo2.jpg" alt="宣传照2" class="carousel-img">
-            <img src="promo3.jpg" alt="宣传照3" class="carousel-img">
-            <button class="carousel-btn right" id="nextBtn" aria-label="下一张">
-                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="16" cy="16" r="16" fill="none"/>
-                    <path d="M12 8L20 16L12 24" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-            </button>
+    <header class="hero" style="z-index:0;">
+        <img src="promo1.webp" alt="星芒屋宣传图1" class="hero-img">
+        <div class="hero-text">
+            <p>
+                踏着小雪的某日<br>
+                <span class="hero-text-small hero-text-second">你推开了星芒屋的大门</span><br>
+                <span class="hero-text-small hero-text-indent">映入眼帘的是--</span>
+            </p>
+        </div>
+        <div class="hero-curve">
+            <svg viewBox="0 0 1920 180" width="100%" height="100%" preserveAspectRatio="none" style="display:block;position:absolute;bottom:0;left:0;">
+                <path d="M0,0 Q960,180 1920,0 L1920,180 L0,180 Z" fill="#034d4f"/>
+            </svg>
         </div>
     </header>
-    <script src="carousel.js"></script>
+    <section class="hero-section">
+        <img src="promo2.webp" alt="星芒屋宣传图2" class="hero-section-img">
+    </section>
+    <section class="gallery-section">
+        <div class="gallery-container">
+            <div class="gallery-item">
+                <div class="image-frame">
+                    <img src="gallery1.webp" alt="门口的星芒树" class="gallery-img">
+                </div>
+                <h3 class="gallery-title">门口的星芒树</h3>
+            </div>
+            <div class="gallery-item">
+                <div class="image-frame">
+                    <img src="gallery2.webp" alt="前厅与柜台" class="gallery-img">
+                </div>
+                <h3 class="gallery-title">前厅与柜台</h3>
+            </div>
+            <div class="gallery-item">
+                <div class="image-frame">
+                    <img src="gallery3.webp" alt="大壁炉" class="gallery-img">
+                </div>
+                <h3 class="gallery-title">大壁炉</h3>
+            </div>
+            <div class="gallery-item">
+                <div class="image-frame">
+                    <img src="gallery4.webp" alt="窗边就餐处" class="gallery-img">
+                </div>
+                <h3 class="gallery-title">窗边就餐处</h3>
+            </div>
+            <div class="gallery-item">
+                <div class="image-frame">
+                    <img src="gallery5.webp" alt="小壁炉" class="gallery-img">
+                </div>
+                <h3 class="gallery-title">小壁炉</h3>
+            </div>
+            <div class="gallery-item">
+                <div class="image-frame">
+                    <img src="gallery6.webp" alt="礼物区域" class="gallery-img">
+                </div>
+                <h3 class="gallery-title">礼物区域</h3>
+            </div>
+        </div>
+    </section>
 </body>
 </html> 
