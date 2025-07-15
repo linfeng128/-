@@ -38,41 +38,134 @@
         <div class="gallery-container">
             <div class="gallery-item">
                 <div class="image-frame">
-                    <img src="gallery1.webp" alt="门口的星芒树" class="gallery-img">
+                    <img src="gallery1.webp" alt="门口的星芒树" class="gallery-img" data-index="1">
                 </div>
                 <h3 class="gallery-title">门口的星芒树</h3>
             </div>
             <div class="gallery-item">
                 <div class="image-frame">
-                    <img src="gallery2.webp" alt="前厅与柜台" class="gallery-img">
+                    <img src="gallery2.webp" alt="前厅与柜台" class="gallery-img" data-index="2">
                 </div>
                 <h3 class="gallery-title">前厅与柜台</h3>
             </div>
             <div class="gallery-item">
                 <div class="image-frame">
-                    <img src="gallery3.webp" alt="大壁炉" class="gallery-img">
+                    <img src="gallery3.webp" alt="大壁炉" class="gallery-img" data-index="3">
                 </div>
                 <h3 class="gallery-title">大壁炉</h3>
             </div>
             <div class="gallery-item">
                 <div class="image-frame">
-                    <img src="gallery4.webp" alt="窗边就餐处" class="gallery-img">
+                    <img src="gallery4.webp" alt="窗边就餐处" class="gallery-img" data-index="4">
                 </div>
                 <h3 class="gallery-title">窗边就餐处</h3>
             </div>
             <div class="gallery-item">
                 <div class="image-frame">
-                    <img src="gallery5.webp" alt="小壁炉" class="gallery-img">
+                    <img src="gallery5.webp" alt="小壁炉" class="gallery-img" data-index="5">
                 </div>
                 <h3 class="gallery-title">小壁炉</h3>
             </div>
             <div class="gallery-item">
                 <div class="image-frame">
-                    <img src="gallery6.webp" alt="礼物区域" class="gallery-img">
+                    <img src="gallery6.webp" alt="礼物区域" class="gallery-img" data-index="6">
                 </div>
                 <h3 class="gallery-title">礼物区域</h3>
             </div>
         </div>
     </section>
+    <!-- 放大图片遮罩层 -->
+    <div id="gallery-modal" class="gallery-modal">
+      <span class="gallery-modal-close">&times;</span>
+      <img id="gallery-modal-img" src="" alt="放大图片">
+      <div class="gallery-modal-desc"></div>
+      <div class="gallery-modal-dots">
+        <span class="gallery-modal-dot" data-dot="1"></span>
+        <span class="gallery-modal-dot" data-dot="2"></span>
+        <span class="gallery-modal-dot" data-dot="3"></span>
+        <span class="gallery-modal-dot" data-dot="4"></span>
+        <span class="gallery-modal-dot" data-dot="5"></span>
+        <span class="gallery-modal-dot" data-dot="6"></span>
+      </div>
+      <button class="gallery-modal-btn gallery-modal-prev">&#60;</button>
+      <button class="gallery-modal-btn gallery-modal-next">&#62;</button>
+      <div class="gallery-modal-mask"></div>
+    </div>
 </body>
+<script>
+const galleryDescriptions = [
+  '',
+  '用小彩灯和飘带仔细装点的星芒树，承载了大家的心愿！有人互动（右键）时会闪耀点点星光，说不定会带来好运？',
+  '店员们常在这里热情迎接入店的客人们，有什么问题请不要害羞，尽管咨询前台吧！',
+  '大厅左侧宽敞的大壁炉，听着噼里啪啦的柴火声和大家一同欢声笑语，非常有星芒节的氛围！',
+  '吃着热腾腾或甜滋滋的星芒美食欣赏窗外的星芒雪景，何尝不是一种享受呢？',
+  '大厅右侧的小壁炉，是因为空间不大且被星芒树和礼物们围绕着吗，似乎格外温暖！',
+  '尚未送出的礼物都放在这里，不知不觉已经达到了惊人的数量...在书桌的卡片上写下心愿的话，会实现吗？'
+];
+const galleryImgs = [
+  '',
+  'gallery1.webp',
+  'gallery2.webp',
+  'gallery3.webp',
+  'gallery4.webp',
+  'gallery5.webp',
+  'gallery6.webp'
+];
+const modal = document.getElementById('gallery-modal');
+const modalImg = document.getElementById('gallery-modal-img');
+const modalDesc = document.querySelector('.gallery-modal-desc');
+const prevBtn = document.querySelector('.gallery-modal-prev');
+const nextBtn = document.querySelector('.gallery-modal-next');
+const mask = document.querySelector('.gallery-modal-mask');
+const closeBtn = document.querySelector('.gallery-modal-close');
+let currentIdx = 1;
+function updateDots(idx) {
+  document.querySelectorAll('.gallery-modal-dot').forEach(dot => {
+    if(Number(dot.getAttribute('data-dot')) === Number(idx)) {
+      dot.classList.add('active');
+    } else {
+      dot.classList.remove('active');
+    }
+  });
+}
+function showModal(idx) {
+  currentIdx = Number(idx);
+  modalImg.src = galleryImgs[currentIdx];
+  modalDesc.textContent = galleryDescriptions[currentIdx] || '';
+  modal.classList.add('show');
+  updateDots(currentIdx);
+}
+document.querySelectorAll('.gallery-img').forEach(img => {
+  img.style.cursor = 'zoom-in';
+  img.addEventListener('click', function() {
+    showModal(this.getAttribute('data-index'));
+  });
+});
+prevBtn.addEventListener('click', e => {
+  e.stopPropagation();
+  let idx = currentIdx - 1;
+  if(idx < 1) idx = 6;
+  showModal(idx);
+});
+nextBtn.addEventListener('click', e => {
+  e.stopPropagation();
+  let idx = currentIdx + 1;
+  if(idx > 6) idx = 1;
+  showModal(idx);
+});
+mask.addEventListener('click', () => modal.classList.remove('show'));
+closeBtn.addEventListener('click', () => modal.classList.remove('show'));
+document.addEventListener('keydown', e => {
+  if(!modal.classList.contains('show')) return;
+  if(e.key === 'Escape') modal.classList.remove('show');
+  if(e.key === 'ArrowLeft') prevBtn.click();
+  if(e.key === 'ArrowRight') nextBtn.click();
+});
+document.querySelectorAll('.gallery-modal-dot').forEach(dot => {
+  dot.addEventListener('click', function(e) {
+    e.stopPropagation();
+    showModal(this.getAttribute('data-dot'));
+  });
+});
+</script>
 </html> 
