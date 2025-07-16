@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>联系我们 - 星芒屋</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="contact-page">
+    <nav class="navbar">
+        <ul class="navbar-list">
+            <li class="navbar-item"><a href="index.html">推开星芒屋的大门</a></li>
+            <li><a href="about.html" class="nav-link">关于星芒屋</a></li>
+            <li><a href="followers.html" class="nav-link">圣人的追随者们</a></li>
+            <li><a href="memories.html" class="nav-link">星芒屋的珍贵回忆</a></li>
+            <li><a href="contact.html" class="nav-link active">联系我们</a></li>
+        </ul>
+    </nav>
+    
+    <!-- 背景图片区域 -->
+    <div class="contact-bg-img-wrap">
+        <img src="about-promo.webp" class="contact-bg-img" alt="联系我们背景图">
+        
+        <!-- 中间靠上的图片位置 -->
+        <div class="contact-image-placeholder">
+            <img src="contact-image.webp" alt="联系图片" class="contact-image">
+        </div>
+        
+        <!-- 中下方的联系信息 -->
+        <div class="contact-info-section">
+            <div class="contact-title">联系我们</div>
+            <div class="contact-content">
+                <p>欢迎加入星芒屋顾客群【929076074】感谢您的支持！</p>
+                <p>被星芒屋的氛围所感染——想要成为圣人的追随者？</p>
+                <p>欢迎联系店长【2117084681】进行咨询！</p>
+                <p>内置莫古力也能看懂的教学以及培训实习库啵！</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 全局尾部 -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-left">
+                <div class="footer-column">
+                    <div class="footer-header">所在区服</div>
+                    <div class="footer-item">
+                        <span class="footer-text">莫古力</span>
+                    </div>
+                    <div class="footer-item">
+                        <span class="footer-text">神拳痕</span>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <div class="footer-header">详细地址</div>
+                    <div class="footer-item">
+                        <span class="footer-text">海雾村</span>
+                    </div>
+                    <div class="footer-item">
+                        <span class="footer-text">30-15</span>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <div class="footer-header">联系我们</div>
+                    <div class="footer-item">
+                        <span class="footer-text">929076074 (顾客群)</span>
+                    </div>
+                    <div class="footer-item">
+                        <span class="footer-text">2117084681 (店长)</span>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-right">
+                <img src="server-icon1.webp" alt="莫古力区服图标" class="footer-icon" data-modal-img="server-image1.webp">
+                <img src="server-icon2.webp" alt="神拳痕区服图标" class="footer-icon" data-modal-img="server-image2.webp">
+            </div>
+        </div>
+    </footer>
+
+    <!-- 尾部图标模态框 -->
+    <div id="footer-modal" class="footer-modal">
+        <span class="footer-modal-close">&times;</span>
+        <img id="footer-modal-img" src="" alt="区服图片">
+        <div class="footer-modal-mask"></div>
+    </div>
+</body>
+
+<script>
+// 尾部图标点击放大功能
+const footerModal = document.getElementById('footer-modal');
+const footerModalImg = document.getElementById('footer-modal-img');
+const footerMask = document.querySelector('.footer-modal-mask');
+const footerCloseBtn = document.querySelector('.footer-modal-close');
+
+function showFooterModal(imgSrc) {
+    footerModalImg.src = imgSrc;
+    footerModal.classList.add('show');
+}
+
+function closeFooterModal() {
+    footerModal.classList.remove('show');
+}
+
+// 为所有尾部图标添加点击事件
+document.querySelectorAll('.footer-icon').forEach(icon => {
+    icon.addEventListener('click', function() {
+        const imgSrc = this.getAttribute('data-modal-img');
+        if (imgSrc) {
+            showFooterModal(imgSrc);
+        }
+    });
+});
+
+// 尾部模态框事件监听
+footerMask.addEventListener('click', closeFooterModal);
+footerCloseBtn.addEventListener('click', closeFooterModal);
+
+// 键盘事件
+document.addEventListener('keydown', e => {
+    if (footerModal.classList.contains('show') && e.key === 'Escape') {
+        closeFooterModal();
+    }
+});
+</script>
+</html>

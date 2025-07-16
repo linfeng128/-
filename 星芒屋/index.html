@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>星芒屋</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <ul class="navbar-list">
+            <li class="navbar-item active"><a href="index.html">推开星芒屋的大门</a></li>
+            <li><a href="about.html" class="nav-link">关于星芒屋</a></li>
+            <li><a href="followers.html" class="nav-link">圣人的追随者们</a></li>
+            <li><a href="memories.html" class="nav-link">星芒屋的珍贵回忆</a></li>
+            <li><a href="contact.html" class="nav-link">联系我们</a></li>
+        </ul>
+    </nav>
+    <header class="hero" style="z-index:0;">
+        <img src="promo1.webp" alt="星芒屋宣传图1" class="hero-img">
+        <div class="hero-text">
+            <p>
+                踏着小雪的某日<br>
+                <span class="hero-text-small hero-text-second">你推开了星芒屋的大门</span><br>
+                <span class="hero-text-small hero-text-indent">映入眼帘的是--</span>
+            </p>
+        </div>
+        <div class="hero-curve">
+            <svg viewBox="0 0 1920 180" width="100%" height="100%" preserveAspectRatio="none" style="display:block;position:absolute;bottom:0;left:0;">
+                <path d="M0,0 Q960,180 1920,0 L1920,180 L0,180 Z" fill="#034d4f"/>
+            </svg>
+        </div>
+    </header>
+    <section class="hero-section">
+        <img src="promo2.webp" alt="星芒屋宣传图2" class="hero-section-img">
+    </section>
+    <section class="gallery-section">
+        <div class="gallery-container">
+            <div class="gallery-item">
+                <div class="image-frame">
+                    <img src="gallery1.webp" alt="门口的星芒树" class="gallery-img" data-index="1">
+                </div>
+                <h3 class="gallery-title">门口的星芒树</h3>
+            </div>
+            <div class="gallery-item">
+                <div class="image-frame">
+                    <img src="gallery2.webp" alt="前厅与柜台" class="gallery-img" data-index="2">
+                </div>
+                <h3 class="gallery-title">前厅与柜台</h3>
+            </div>
+            <div class="gallery-item">
+                <div class="image-frame">
+                    <img src="gallery3.webp" alt="大壁炉" class="gallery-img" data-index="3">
+                </div>
+                <h3 class="gallery-title">大壁炉</h3>
+            </div>
+            <div class="gallery-item">
+                <div class="image-frame">
+                    <img src="gallery4.webp" alt="窗边就餐处" class="gallery-img" data-index="4">
+                </div>
+                <h3 class="gallery-title">窗边就餐处</h3>
+            </div>
+            <div class="gallery-item">
+                <div class="image-frame">
+                    <img src="gallery5.webp" alt="小壁炉" class="gallery-img" data-index="5">
+                </div>
+                <h3 class="gallery-title">小壁炉</h3>
+            </div>
+            <div class="gallery-item">
+                <div class="image-frame">
+                    <img src="gallery6.webp" alt="礼物区域" class="gallery-img" data-index="6">
+                </div>
+                <h3 class="gallery-title">礼物区域</h3>
+            </div>
+        </div>
+    </section>
+    <!-- 放大图片遮罩层 -->
+    <div id="gallery-modal" class="gallery-modal">
+      <span class="gallery-modal-close">&times;</span>
+      <img id="gallery-modal-img" src="" alt="放大图片">
+      <div class="gallery-modal-desc"></div>
+      <div class="gallery-modal-dots">
+        <span class="gallery-modal-dot" data-dot="1"></span>
+        <span class="gallery-modal-dot" data-dot="2"></span>
+        <span class="gallery-modal-dot" data-dot="3"></span>
+        <span class="gallery-modal-dot" data-dot="4"></span>
+        <span class="gallery-modal-dot" data-dot="5"></span>
+        <span class="gallery-modal-dot" data-dot="6"></span>
+      </div>
+      <button class="gallery-modal-btn gallery-modal-prev">&#60;</button>
+      <button class="gallery-modal-btn gallery-modal-next">&#62;</button>
+      <div class="gallery-modal-mask"></div>
+    </div>
+
+    <!-- 全局尾部 -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-left">
+                <div class="footer-column">
+                    <div class="footer-header">所在区服</div>
+                    <div class="footer-item">
+                        <span class="footer-text">莫古力</span>
+                    </div>
+                    <div class="footer-item">
+                        <span class="footer-text">神拳痕</span>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <div class="footer-header">详细地址</div>
+                    <div class="footer-item">
+                        <span class="footer-text">海雾村</span>
+                    </div>
+                    <div class="footer-item">
+                        <span class="footer-text">30-15</span>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <div class="footer-header">联系我们</div>
+                    <div class="footer-item">
+                        <span class="footer-text">929076074 (顾客群)</span>
+                    </div>
+                    <div class="footer-item">
+                        <span class="footer-text">2117084681 (店长)</span>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-right">
+                <img src="server-icon1.webp" alt="莫古力区服图标" class="footer-icon" data-modal-img="server-image1.webp">
+                <img src="server-icon2.webp" alt="神拳痕区服图标" class="footer-icon" data-modal-img="server-image2.webp">
+            </div>
+        </div>
+    </footer>
+
+    <!-- 尾部图标模态框 -->
+    <div id="footer-modal" class="footer-modal">
+        <span class="footer-modal-close">&times;</span>
+        <img id="footer-modal-img" src="" alt="区服图片">
+        <div class="footer-modal-mask"></div>
+    </div>
+</body>
+<script>
+const galleryDescriptions = [
+  '',
+  '用小彩灯和飘带仔细装点的星芒树，承载了大家的心愿！有人互动（右键）时会闪耀点点星光，说不定会带来好运？',
+  '店员们常在这里热情迎接入店的客人们，有什么问题请不要害羞，尽管咨询前台吧！',
+  '大厅左侧宽敞的大壁炉，听着噼里啪啦的柴火声和大家一同欢声笑语，非常有星芒节的氛围！',
+  '吃着热腾腾或甜滋滋的星芒美食欣赏窗外的星芒雪景，何尝不是一种享受呢？',
+  '大厅右侧的小壁炉，是因为空间不大且被星芒树和礼物们围绕着吗，似乎格外温暖！',
+  '尚未送出的礼物都放在这里，不知不觉已经达到了惊人的数量...在书桌的卡片上写下心愿的话，会实现吗？'
+];
+const galleryImgs = [
+  '',
+  'gallery1.webp',
+  'gallery2.webp',
+  'gallery3.webp',
+  'gallery4.webp',
+  'gallery5.webp',
+  'gallery6.webp'
+];
+const modal = document.getElementById('gallery-modal');
+const modalImg = document.getElementById('gallery-modal-img');
+const modalDesc = document.querySelector('.gallery-modal-desc');
+const prevBtn = document.querySelector('.gallery-modal-prev');
+const nextBtn = document.querySelector('.gallery-modal-next');
+const mask = document.querySelector('.gallery-modal-mask');
+const closeBtn = document.querySelector('.gallery-modal-close');
+let currentIdx = 1;
+function updateDots(idx) {
+  document.querySelectorAll('.gallery-modal-dot').forEach(dot => {
+    if(Number(dot.getAttribute('data-dot')) === Number(idx)) {
+      dot.classList.add('active');
+    } else {
+      dot.classList.remove('active');
+    }
+  });
+}
+function showModal(idx) {
+  currentIdx = Number(idx);
+  modalImg.src = galleryImgs[currentIdx];
+  modalDesc.textContent = galleryDescriptions[currentIdx] || '';
+  modal.classList.add('show');
+  updateDots(currentIdx);
+}
+document.querySelectorAll('.gallery-img').forEach(img => {
+  img.style.cursor = 'zoom-in';
+  img.addEventListener('click', function() {
+    showModal(this.getAttribute('data-index'));
+  });
+});
+prevBtn.addEventListener('click', e => {
+  e.stopPropagation();
+  let idx = currentIdx - 1;
+  if(idx < 1) idx = 6;
+  showModal(idx);
+});
+nextBtn.addEventListener('click', e => {
+  e.stopPropagation();
+  let idx = currentIdx + 1;
+  if(idx > 6) idx = 1;
+  showModal(idx);
+});
+mask.addEventListener('click', () => modal.classList.remove('show'));
+closeBtn.addEventListener('click', () => modal.classList.remove('show'));
+document.addEventListener('keydown', e => {
+  if(!modal.classList.contains('show')) return;
+  if(e.key === 'Escape') modal.classList.remove('show');
+  if(e.key === 'ArrowLeft') prevBtn.click();
+  if(e.key === 'ArrowRight') nextBtn.click();
+});
+document.querySelectorAll('.gallery-modal-dot').forEach(dot => {
+  dot.addEventListener('click', function(e) {
+    e.stopPropagation();
+    showModal(this.getAttribute('data-dot'));
+  });
+});
+
+// 尾部图标点击放大功能
+const footerModal = document.getElementById('footer-modal');
+const footerModalImg = document.getElementById('footer-modal-img');
+const footerMask = document.querySelector('.footer-modal-mask');
+const footerCloseBtn = document.querySelector('.footer-modal-close');
+
+function showFooterModal(imgSrc) {
+    footerModalImg.src = imgSrc;
+    footerModal.classList.add('show');
+}
+
+function closeFooterModal() {
+    footerModal.classList.remove('show');
+}
+
+// 为所有尾部图标添加点击事件
+document.querySelectorAll('.footer-icon').forEach(icon => {
+    icon.addEventListener('click', function() {
+        const imgSrc = this.getAttribute('data-modal-img');
+        if (imgSrc) {
+            showFooterModal(imgSrc);
+        }
+    });
+});
+
+// 尾部模态框事件监听
+footerMask.addEventListener('click', closeFooterModal);
+footerCloseBtn.addEventListener('click', closeFooterModal);
+
+// 更新键盘事件处理
+document.addEventListener('keydown', e => {
+  // 尾部模态框优先处理
+  if(footerModal.classList.contains('show')) {
+    if(e.key === 'Escape') closeFooterModal();
+    return;
+  }
+
+  // 画廊模态框处理
+  if(!modal.classList.contains('show')) return;
+  if(e.key === 'Escape') modal.classList.remove('show');
+  if(e.key === 'ArrowLeft') prevBtn.click();
+  if(e.key === 'ArrowRight') nextBtn.click();
+});
+</script>
+</html> 

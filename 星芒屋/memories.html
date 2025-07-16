@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>星芒屋的珍贵回忆</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="memories-page">
+    <nav class="navbar">
+        <ul class="navbar-list">
+            <li class="navbar-item"><a href="index.html">推开星芒屋的大门</a></li>
+            <li><a href="about.html" class="nav-link">关于星芒屋</a></li>
+            <li><a href="followers.html" class="nav-link">圣人的追随者们</a></li>
+            <li><a href="memories.html" class="nav-link active">星芒屋的珍贵回忆</a></li>
+            <li><a href="contact.html" class="nav-link">联系我们</a></li>
+        </ul>
+    </nav>
+    
+    <!-- 背景图片区域 -->
+    <div class="memories-bg-img-wrap">
+        <img src="about-promo.webp" class="memories-bg-img" alt="星芒屋珍贵回忆背景图">
+        
+        <!-- 文字叠加在背景图片上 -->
+        <div class="memories-overlay-text">
+            <div class="memories-overlay-title">来去匆匆的留言</div>
+            <div class="memories-overlay-subtitle">留言存档！感谢大家的支持！</div>
+
+            <!-- 循环播放相册 -->
+            <div class="memories-carousel">
+                <div class="memories-carousel-container">
+                    <img src="message1.webp" alt="留言1" class="memories-carousel-img active" data-index="1">
+                    <img src="message2.webp" alt="留言2" class="memories-carousel-img" data-index="2">
+                    <img src="message3.webp" alt="留言3" class="memories-carousel-img" data-index="3">
+                    <img src="message4.webp" alt="留言4" class="memories-carousel-img" data-index="4">
+                    <img src="message5.webp" alt="留言5" class="memories-carousel-img" data-index="5">
+                    <img src="message6.webp" alt="留言6" class="memories-carousel-img" data-index="6">
+                    <img src="message7.webp" alt="留言7" class="memories-carousel-img" data-index="7">
+                </div>
+                <button class="memories-carousel-btn memories-carousel-prev" id="memories-prev-btn">&#60;</button>
+                <button class="memories-carousel-btn memories-carousel-next" id="memories-next-btn">&#62;</button>
+                <div class="memories-carousel-dots">
+                    <span class="memories-carousel-dot active" data-dot="1"></span>
+                    <span class="memories-carousel-dot" data-dot="2"></span>
+                    <span class="memories-carousel-dot" data-dot="3"></span>
+                    <span class="memories-carousel-dot" data-dot="4"></span>
+                    <span class="memories-carousel-dot" data-dot="5"></span>
+                    <span class="memories-carousel-dot" data-dot="6"></span>
+                    <span class="memories-carousel-dot" data-dot="7"></span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 弧形遮罩 -->
+        <div class="memories-hero-curve">
+            <svg viewBox="0 0 1920 180" width="100%" height="100%" preserveAspectRatio="none" style="display:block;position:absolute;bottom:0;left:0;">
+                <path d="M0,0 Q960,180 1920,0 L1920,180 L0,180 Z" fill="#F6ECD9"/>
+            </svg>
+        </div>
+    </div>
+    
+    <!-- 图片下方的内容区域 -->
+    <div class="memories-content-section">
+        <div class="memories-content-text">
+            <div class="memories-content-title">彩灯下的回忆</div>
+            <div class="memories-content-subtitle">十分厚实的一本相册，内容似乎在持续增加中</div>
+        </div>
+
+        <!-- 2x2照片网格 -->
+        <div class="memories-photo-grid">
+            <div class="memories-photo-item">
+                <img src="memory-photo1.webp" alt="回忆照片1" class="memories-photo-img" data-photo-index="1">
+            </div>
+            <div class="memories-photo-item">
+                <img src="memory-photo2.webp" alt="回忆照片2" class="memories-photo-img" data-photo-index="2">
+            </div>
+            <div class="memories-photo-item">
+                <img src="memory-photo3.webp" alt="回忆照片3" class="memories-photo-img" data-photo-index="3">
+            </div>
+            <div class="memories-photo-item">
+                <img src="memory-photo4.webp" alt="回忆照片4" class="memories-photo-img" data-photo-index="4">
+            </div>
+        </div>
+    </div>
+
+    <!-- 照片放大模态框 -->
+    <div id="memories-photo-modal" class="memories-photo-modal">
+        <span class="memories-photo-modal-close">&times;</span>
+        <img id="memories-photo-modal-img" src="" alt="回忆照片">
+        <div class="memories-photo-modal-info" id="memories-photo-modal-info"></div>
+        <div class="memories-photo-modal-counter" id="memories-photo-modal-counter"></div>
+        <button class="memories-photo-modal-btn memories-photo-modal-prev" id="memories-photo-prev-btn">&#60;</button>
+        <button class="memories-photo-modal-btn memories-photo-modal-next" id="memories-photo-next-btn">&#62;</button>
+        <div class="memories-photo-modal-mask"></div>
+    </div>
+
+    <!-- 留言相册放大模态框 -->
+    <div id="memories-message-modal" class="memories-message-modal">
+        <span class="memories-message-modal-close">&times;</span>
+        <img id="memories-message-modal-img" src="" alt="留言">
+        <div class="memories-message-modal-info" id="memories-message-modal-info"></div>
+        <div class="memories-message-modal-counter" id="memories-message-modal-counter"></div>
+        <button class="memories-message-modal-btn memories-message-modal-prev" id="memories-message-prev-btn">&#60;</button>
+        <button class="memories-message-modal-btn memories-message-modal-next" id="memories-message-next-btn">&#62;</button>
+        <div class="memories-message-modal-mask"></div>
+    </div>
+</body>
+
+<script>
+// 相册轮播功能
+const carouselImgs = document.querySelectorAll('.memories-carousel-img');
+const carouselPrevBtn = document.getElementById('memories-prev-btn');
+const carouselNextBtn = document.getElementById('memories-next-btn');
+const carouselDots = document.querySelectorAll('.memories-carousel-dot');
+let currentCarouselIndex = 0;
+let carouselTimer = null;
+
+function showCarouselImage(index) {
+    carouselImgs.forEach((img, i) => {
+        img.classList.toggle('active', i === index);
+    });
+    carouselDots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === index);
+    });
+}
+
+function nextCarouselImage() {
+    currentCarouselIndex = (currentCarouselIndex + 1) % carouselImgs.length;
+    showCarouselImage(currentCarouselIndex);
+}
+
+function prevCarouselImage() {
+    currentCarouselIndex = (currentCarouselIndex - 1 + carouselImgs.length) % carouselImgs.length;
+    showCarouselImage(currentCarouselIndex);
+}
+
+function startCarouselAutoPlay() {
+    carouselTimer = setInterval(nextCarouselImage, 8000);
+}
+
+function stopCarouselAutoPlay() {
+    if (carouselTimer) {
+        clearInterval(carouselTimer);
+        carouselTimer = null;
+    }
+}
+
+// 相册事件监听
+carouselNextBtn.addEventListener('click', () => {
+    stopCarouselAutoPlay();
+    nextCarouselImage();
+    startCarouselAutoPlay();
+});
+
+carouselPrevBtn.addEventListener('click', () => {
+    stopCarouselAutoPlay();
+    prevCarouselImage();
+    startCarouselAutoPlay();
+});
+
+carouselDots.forEach((dot, index) => {
+    dot.addEventListener('click', () => {
+        stopCarouselAutoPlay();
+        currentCarouselIndex = index;
+        showCarouselImage(currentCarouselIndex);
+        startCarouselAutoPlay();
+    });
+});
+
+// 启动自动播放
+startCarouselAutoPlay();
+
+// 留言相册点击放大功能
+const messageModal = document.getElementById('memories-message-modal');
+const messageModalImg = document.getElementById('memories-message-modal-img');
+const messageModalInfo = document.getElementById('memories-message-modal-info');
+const messageModalCounter = document.getElementById('memories-message-modal-counter');
+const messagePrevBtn = document.getElementById('memories-message-prev-btn');
+const messageNextBtn = document.getElementById('memories-message-next-btn');
+const messageMask = document.querySelector('.memories-message-modal-mask');
+const messageCloseBtn = document.querySelector('.memories-message-modal-close');
+
+let currentMessageIndex = 1;
+const totalMessages = 7;
+
+function showMessageModal(messageIndex) {
+    currentMessageIndex = parseInt(messageIndex);
+    const imgSrc = `message${currentMessageIndex}.webp`;
+    const altText = `留言${currentMessageIndex}`;
+
+    messageModalImg.src = imgSrc;
+    messageModalImg.alt = altText;
+    messageModalInfo.textContent = altText;
+    messageModalCounter.textContent = `${currentMessageIndex} / ${totalMessages}`;
+
+    // 同步更新轮播的当前位置
+    currentCarouselIndex = currentMessageIndex - 1;
+    showCarouselImage(currentCarouselIndex);
+
+    messageModal.classList.add('show');
+    stopCarouselAutoPlay(); // 暂停自动播放
+}
+
+function showPrevMessage() {
+    currentMessageIndex = currentMessageIndex > 1 ? currentMessageIndex - 1 : totalMessages;
+    showMessageModal(currentMessageIndex);
+}
+
+function showNextMessage() {
+    currentMessageIndex = currentMessageIndex < totalMessages ? currentMessageIndex + 1 : 1;
+    showMessageModal(currentMessageIndex);
+}
+
+function closeMessageModal() {
+    messageModal.classList.remove('show');
+    startCarouselAutoPlay(); // 恢复自动播放
+}
+
+// 为所有留言相册图片添加点击事件
+document.querySelectorAll('.memories-carousel-img').forEach(img => {
+    img.addEventListener('click', function() {
+        // 点击放大时显示当前轮播的图片
+        showMessageModal(currentCarouselIndex + 1);
+    });
+});
+
+// 留言模态框事件监听
+messagePrevBtn.addEventListener('click', e => {
+    e.stopPropagation();
+    showPrevMessage();
+});
+
+messageNextBtn.addEventListener('click', e => {
+    e.stopPropagation();
+    showNextMessage();
+});
+
+messageMask.addEventListener('click', closeMessageModal);
+messageCloseBtn.addEventListener('click', closeMessageModal);
+
+// 照片放大功能
+const photoModal = document.getElementById('memories-photo-modal');
+const photoModalImg = document.getElementById('memories-photo-modal-img');
+const photoModalInfo = document.getElementById('memories-photo-modal-info');
+const photoModalCounter = document.getElementById('memories-photo-modal-counter');
+const photoPrevBtn = document.getElementById('memories-photo-prev-btn');
+const photoNextBtn = document.getElementById('memories-photo-next-btn');
+const photoMask = document.querySelector('.memories-photo-modal-mask');
+const photoCloseBtn = document.querySelector('.memories-photo-modal-close');
+
+let currentPhotoIndex = 1;
+const totalPhotos = 4;
+
+function showPhotoModal(photoIndex) {
+    currentPhotoIndex = parseInt(photoIndex);
+    const imgSrc = `memory-photo${currentPhotoIndex}.webp`;
+    const altText = `回忆照片${currentPhotoIndex}`;
+
+    photoModalImg.src = imgSrc;
+    photoModalImg.alt = altText;
+    photoModalInfo.textContent = altText;
+    photoModalCounter.textContent = `${currentPhotoIndex} / ${totalPhotos}`;
+
+    photoModal.classList.add('show');
+}
+
+function showPrevPhoto() {
+    currentPhotoIndex = currentPhotoIndex > 1 ? currentPhotoIndex - 1 : totalPhotos;
+    showPhotoModal(currentPhotoIndex);
+}
+
+function showNextPhoto() {
+    currentPhotoIndex = currentPhotoIndex < totalPhotos ? currentPhotoIndex + 1 : 1;
+    showPhotoModal(currentPhotoIndex);
+}
+
+function closePhotoModal() {
+    photoModal.classList.remove('show');
+}
+
+// 为所有照片添加点击事件
+document.querySelectorAll('.memories-photo-img').forEach(img => {
+    img.addEventListener('click', function() {
+        const photoIndex = this.getAttribute('data-photo-index');
+        showPhotoModal(photoIndex);
+    });
+});
+
+// 照片模态框事件监听
+photoPrevBtn.addEventListener('click', e => {
+    e.stopPropagation();
+    showPrevPhoto();
+});
+
+photoNextBtn.addEventListener('click', e => {
+    e.stopPropagation();
+    showNextPhoto();
+});
+
+photoMask.addEventListener('click', closePhotoModal);
+photoCloseBtn.addEventListener('click', closePhotoModal);
+
+// 键盘事件
+document.addEventListener('keydown', e => {
+    // 留言相册模态框键盘事件
+    if (messageModal.classList.contains('show')) {
+        if (e.key === 'Escape') closeMessageModal();
+        if (e.key === 'ArrowLeft') showPrevMessage();
+        if (e.key === 'ArrowRight') showNextMessage();
+        return;
+    }
+
+    // 回忆照片模态框键盘事件
+    if (photoModal.classList.contains('show')) {
+        if (e.key === 'Escape') closePhotoModal();
+        if (e.key === 'ArrowLeft') showPrevPhoto();
+        if (e.key === 'ArrowRight') showNextPhoto();
+        return;
+    }
+});
+</script>
+</html>
